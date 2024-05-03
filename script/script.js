@@ -44,18 +44,18 @@ class personne {
             let div = document.createElement('div')
             input.type = 'number'
             input.id = 'userid'
-            input.placeholder = 'ENTRE ID USER : '
-            input.classList = "form-control w-75 mx-auto d-block"
+            input.placeholder = 'Entrez votre identifiant utilisateur pour modifier ou afficher plus d\'informations '
+            input.classList = "form-control  d-block"
             input.min = 10000
             input.required
             btn.id = 'submit'
             btn.type = 'button'
-            btn.classList = "btn btn-outline-info btn-sm"
+            btn.classList = "btn my-2 btn-outline-info btn-md d-block mx-auto w-25"
             btn.setAttribute('onclick', "affecher()")
             btn.setAttribute('onmouseleave', "style.color='#0dcaf0'")
             btn.setAttribute('onmouseover', "style.color='white'")
             btn.innerText = 'affecher'
-            div.classList = "mt-4 pt-1  mx-auto d-flex justify-content-between"
+            div.classList = "mt-4 pt-1  mx-auto "
             div.append(input)
             div.append(btn)
             document.querySelector('#containers2').append(div)
@@ -144,9 +144,10 @@ class personne {
             document.querySelector('#containers').innerHTML = ''
             setTimeout(function () {
                 let h1 = document.createElement('h1')
-                h1.style.color = 'orange'
+                h1.style.color = 'white'
                 h1.innerText = 'ID FOLSE ENTRE CRECTE ID .'
-                h1.classList = 'alert alert-warning fs-2 text-center alert-sm mt-3 mx-auto w-75'
+                h1.classList = 'alert  fs-2 text-center alert-sm mt-3 mx-auto w-75'
+                h1.style.background='red'
                 document.querySelector('#containers').append(h1)
             }, 500)
         }
@@ -248,7 +249,7 @@ function ajouter() {
         return
     }
 
-    let patern_email = /\w+@[a-z]{3,7}\.[a-z]{3,9}/
+    let patern_email = /\w+@([a-z]{3,7})\.([a-z]{3,9})$/ 
     let patern_nom = /[a-zA-Z]{3,50}/
     let patern_password = /[a-zA-Z0-9]+.*/
     nom = document.querySelector('#nom').value
@@ -330,14 +331,15 @@ function modefier() {
     opration6.innerHTML = `<input type="button" class="btn btn-md w-50 btn-success" onclick='Confirmer()' value='Confirmer' ><input type="button" class="btn btn-md w-50" onclick='Anneler()' value='Anneler' >`
 }
 function Confirmer() {
-    let nom = document.querySelector('#nommod2').value
-    let prenom = document.querySelector('#prenommod2').value
+    let nom = document.querySelector('#prenommod2').value
+    let prenom = document.querySelector('#nommod2').value
     let dateb = document.querySelector('#datemod2').value
     let email = document.querySelector('#emailmod2').value
     let pass = document.querySelector('#passmod2').value
     document.querySelector('#userid').removeAttribute('disabled', 'false')
     myclass1.setInformation(IDUSER, nom, prenom, dateb, email, pass)
     myclass1.getInformation(IDUSER)
+    document.querySelector('#containers').innerHTML = ''
     myclass1.get_all_user()
 }
 function suppremier() {
@@ -348,6 +350,8 @@ function suppremier() {
 }
 function Anneler() {
     myclass1.getInformation(IDUSER)
+    document.querySelector('#containers').innerHTML = ''
+
 }
 let menus = document.querySelector('#menunavigation')
 let conture = 0
