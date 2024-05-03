@@ -15,6 +15,20 @@ class personne {
         this.users = []
     }
     ajoute(nom, prenom, datebirth, email, password, datInscription) {
+        let emailExists = false;
+        this.users.forEach(utilisateur => {
+            console.log(utilisateur.email , email)
+            if (utilisateur.email == email) {
+                emailExists = true;
+                return true
+            }
+        })
+        if(emailExists){
+            return true
+        }
+        console.log(email)
+
+
         this.user = {}
         this.user.id = this.id
         this.user.nom = nom
@@ -48,6 +62,7 @@ class personne {
             div.append(btn)
             document.querySelector('#containers2').append(div)
         }
+        return false
     }
     getInformation(id) {
         let boolien = false
@@ -180,7 +195,7 @@ class personne {
         caption.innerText = 'TABLE UTILISATURES'
         caption.classList = 'h1 text-white text-center'
         caption.align = 'top'
-        caption.id='next'
+        caption.id = 'next'
         tr1.append(th3)
         tr1.append(th4)
         thead.append(tr1)
@@ -213,6 +228,7 @@ class personne {
 let myclass1
 let bool = true
 function ajouter() {
+    let requiest
     let prenom = ''
     let nom = ''
     let pass = ''
@@ -236,7 +252,7 @@ function ajouter() {
 
     let patern_email = /\w+@[a-z]{3,7}\.[a-z]{3,9}/
     let patern_nom = /[a-zA-Z]{3,50}/
-    let patern_password = /[a-zA-Z0-9.]{8,50}/
+    let patern_password = /[a-zA-Z0-9.]{8,50}.*/
     nom = document.querySelector('#nom').value
     prenom = document.querySelector('#prenom').value
     pass = document.querySelector('#pass').value
@@ -279,9 +295,15 @@ function ajouter() {
             myclass1 = new personne()
             bool = false
         }
-        myclass1.ajoute(nom, prenom, dateb, email, pass, datInscription)
-        myclass1.get_all_user()
-        add_menu()
+        requiest = myclass1.ajoute(nom, prenom, dateb, email, pass, datInscription)
+        if (!requiest) {
+            myclass1.get_all_user()
+            add_menu()
+            document.querySelector('#error4').innerText = ''
+        }else{
+            document.querySelector('#error4').innerText = 'Cet utilisateur déjà existe. Entrez un nouveau compte.'
+        }
+
     }
 }
 let IDUSER
@@ -337,12 +359,12 @@ function add_menu() {
     let a1 = document.createElement('a')
     let a2 = document.createElement('a')
     a1.innerText = '>>'
-    a1.classList='nav-link'
-    a2.classList='nav-link'
+    a1.classList = 'nav-link'
+    a2.classList = 'nav-link'
     a2.innerText = '<<'
     previous.id = 'previous'
-    a1.href='#next'
-    a2.href='#previous'
+    a1.href = '#next'
+    a2.href = '#previous'
     nexte.append(a1)
     previous.append(a2)
     if (minvalyue >= 20 && lenghttable > maxvalue) {
