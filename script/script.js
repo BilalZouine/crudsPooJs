@@ -50,7 +50,7 @@ class personne {
             input.required
             btn.id = 'submit'
             btn.type = 'button'
-            btn.classList = "btn my-2 btn-outline-info btn-md d-block mx-auto w-25"
+            btn.classList = "btn my-2 btn-outline-info btn-md d-block mx-auto w-50"
             btn.setAttribute('onclick', "affecher()")
             btn.setAttribute('onmouseleave', "style.color='#0dcaf0'")
             btn.setAttribute('onmouseover', "style.color='white'")
