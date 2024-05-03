@@ -1,0 +1,33 @@
+table {
+    font-size: 12px !important;
+}
+
+tr {
+    width: 150px;
+}
+
+tr input {
+    width: 110px !important;
+}
+
+td {
+    height: 100%;
+}
+
+#containers {
+    min-height: 100px;
+}
+
+th {
+    width: 24% !important;
+}
+
+@media screen and (max-width:600px) {
+
+    #containers {
+        width: 100%;
+        overflow: auto;
+    }
+
+
+}
