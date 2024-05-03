@@ -180,6 +180,7 @@ class personne {
         caption.innerText='TABLE UTILISATURES'
         caption.classList='h1 text-white text-center'
         caption.align='top'
+        caption.id='next'
         tr1.append(th3)
         tr1.append(th4)
         thead.append(tr1)
@@ -333,8 +334,17 @@ let conture=0
 function add_menu(){
     let nexte = document.createElement('button')
     let previous = document.createElement('button')
-    nexte.innerText='>>'
-    previous.innerText='<<'
+    let a1 = document.createElement('a')
+    let a2 = document.createElement('a')
+    a1.innerText = '>>'
+    a1.classList='nav-link'
+    a2.classList='nav-link'
+    a2.innerText = '<<'
+    previous.id = 'previous'
+    a1.href='#next'
+    a2.href='#previous'
+    nexte.append(a1)
+    previous.append(a2)
     if(minvalyue>=20 &&  lenghttable > maxvalue){
         menus.innerHTML=''
         nexte.setAttribute('onclick','increment()')
