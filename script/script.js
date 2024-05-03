@@ -1,5 +1,5 @@
-let maxvalue=20
-let minvalyue=0
+let maxvalue = 20
+let minvalyue = 0
 let test = 0
 let lenghttable
 class personne {
@@ -177,9 +177,9 @@ class personne {
         table.classList = 'table teble-stripe mx-auto table-bordered w-75'
         tr1.append(th1)
         tr1.append(th2)
-        caption.innerText='TABLE UTILISATURES'
-        caption.classList='h1 text-white text-center'
-        caption.align='top'
+        caption.innerText = 'TABLE UTILISATURES'
+        caption.classList = 'h1 text-white text-center'
+        caption.align = 'top'
         caption.id='next'
         tr1.append(th3)
         tr1.append(th4)
@@ -189,23 +189,23 @@ class personne {
         table.append(thead)
         table.append(tbody)
         document.querySelector('#tout_users').append(table)
-        lenghttable=this.users.length
-        for (let user=minvalyue ;user<maxvalue;user++){
-            if(user<this.users.length){
-            let tr2 = document.createElement('tr')
-            let td1 = document.createElement('td')
-            let td2 = document.createElement('td')
-            let td3 = document.createElement('td')
-            let td4 = document.createElement('td')
-            td1.innerText = this.users[user].id
-            td2.innerText = this.users[user].nom
-            td3.innerText = this.users[user].prenom
-            td4.innerText = this.users[user].dateInscription
-            tr2.append(td1)
-            tr2.append(td2)
-            tr2.append(td3)
-            tr2.append(td4)
-            document.querySelector('#tbodyuser').append(tr2)
+        lenghttable = this.users.length
+        for (let user = minvalyue; user < maxvalue; user++) {
+            if (user < this.users.length) {
+                let tr2 = document.createElement('tr')
+                let td1 = document.createElement('td')
+                let td2 = document.createElement('td')
+                let td3 = document.createElement('td')
+                let td4 = document.createElement('td')
+                td1.innerText = this.users[user].id
+                td2.innerText = this.users[user].nom
+                td3.innerText = this.users[user].prenom
+                td4.innerText = this.users[user].dateInscription
+                tr2.append(td1)
+                tr2.append(td2)
+                tr2.append(td3)
+                tr2.append(td4)
+                document.querySelector('#tbodyuser').append(tr2)
             }
         }
     }
@@ -330,8 +330,8 @@ function Anneler() {
     myclass1.getInformation(IDUSER)
 }
 let menus = document.querySelector('#menunavigation')
-let conture=0
-function add_menu(){
+let conture = 0
+function add_menu() {
     let nexte = document.createElement('button')
     let previous = document.createElement('button')
     let a1 = document.createElement('a')
@@ -345,35 +345,35 @@ function add_menu(){
     a2.href='#previous'
     nexte.append(a1)
     previous.append(a2)
-    if(minvalyue>=20 &&  lenghttable > maxvalue){
-        menus.innerHTML=''
-        nexte.setAttribute('onclick','increment()')
-        previous.setAttribute('onclick','decrement()')
+    if (minvalyue >= 20 && lenghttable > maxvalue) {
+        menus.innerHTML = ''
+        nexte.setAttribute('onclick', 'increment()')
+        previous.setAttribute('onclick', 'decrement()')
         menus.append(previous)
         menus.append(nexte)
-    }else if (lenghttable>=20 || maxvalue >= lenghttable && lenghttable >=20 ) {
-        if(maxvalue >= lenghttable && maxvalue>20 ){
-            menus.innerHTML=''
-            previous.setAttribute('onclick','decrement()')
+    } else if (lenghttable >= 20 || maxvalue >= lenghttable && lenghttable >= 20) {
+        if (maxvalue >= lenghttable && maxvalue > 20) {
+            menus.innerHTML = ''
+            previous.setAttribute('onclick', 'decrement()')
             menus.append(previous)
-        }else if(lenghttable > 20){
-            menus.innerHTML=''
-            nexte.setAttribute('onclick','increment()')
+        } else if (lenghttable > 20) {
+            menus.innerHTML = ''
+            nexte.setAttribute('onclick', 'increment()')
             menus.append(nexte)
         }
-    }else{
-        menus.innerHTML=''
+    } else {
+        menus.innerHTML = ''
     }
 }
 function increment() {
-    minvalyue+=20
-    maxvalue+=20
+    minvalyue += 20
+    maxvalue += 20
     myclass1.get_all_user()
     conture++
     add_menu()
-}function decrement() {
-    minvalyue-=20
-    maxvalue-=20
+} function decrement() {
+    minvalyue -= 20
+    maxvalue -= 20
     myclass1.get_all_user()
     conture--
     add_menu()
