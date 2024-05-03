@@ -25,6 +25,8 @@ class personne {
         if(emailExists){
             return true
         }
+
+
         this.user = {}
         this.user.id = this.id
         this.user.nom = nom
@@ -248,7 +250,7 @@ function ajouter() {
 
     let patern_email = /\w+@[a-z]{3,7}\.[a-z]{3,9}/
     let patern_nom = /[a-zA-Z]{3,50}/
-    let patern_password = /[a-zA-Z0-9.]{8,50}.*/
+    let patern_password = /[a-zA-Z0-9]+.*/
     nom = document.querySelector('#nom').value
     prenom = document.querySelector('#prenom').value
     pass = document.querySelector('#pass').value
@@ -272,7 +274,7 @@ function ajouter() {
         document.querySelector('#error2').innerText = ''
         cheked++
     }
-    if (!patern_password.test(pass)) {
+    if (!patern_password.test(pass) &&  pass.length >=8) {
         document.querySelector('#error5').innerText = 'Vérifier vote mot de pass  Minimum 8 caractères*'
     } else {
         document.querySelector('#error5').innerText = ''
