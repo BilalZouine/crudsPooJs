@@ -275,7 +275,7 @@ function ajouter() {
         document.querySelector('#error2').innerText = ''
         cheked++
     }
-    if (!patern_password.test(pass) ||  pass.length >=8) {
+    if (!patern_password.test(pass) ||  pass.length <=8) {
         document.querySelector('#error5').innerText = 'Vérifier vote mot de pass  Minimum 8 caractères*'
     } else {
         document.querySelector('#error5').innerText = ''
