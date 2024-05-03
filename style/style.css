@@ -28,6 +28,9 @@ th {
         width: 100%;
         overflow: auto;
     }
+    .alert{
+        font-size:12px !important;
+    }
 
 
 }
