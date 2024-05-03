@@ -17,7 +17,6 @@ class personne {
     ajoute(nom, prenom, datebirth, email, password, datInscription) {
         let emailExists = false;
         this.users.forEach(utilisateur => {
-            console.log(utilisateur.email , email)
             if (utilisateur.email == email) {
                 emailExists = true;
                 return true
@@ -26,9 +25,6 @@ class personne {
         if(emailExists){
             return true
         }
-        console.log(email)
-
-
         this.user = {}
         this.user.id = this.id
         this.user.nom = nom
