@@ -212,23 +212,76 @@ class personne {
 let myclass1
 let bool = true
 function ajouter() {
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear()
-    let datInscription = day + '/' + month + '/' + year
-    let nom = document.querySelector('#nom').value
-    let prenom = document.querySelector('#prenom').value
-    let dateb = document.querySelector('#date').value
-    let email = document.querySelector('#email').value
-    let pass = document.querySelector('#pass').value
-    if (bool) {
-        myclass1 = new personne()
-        bool = false
+    let prenom = ''
+    let nom = ''
+    let pass = ''
+    let email = ''
+    let cheked = 0
+    let element = document.querySelectorAll('.VLFC')
+    element.forEach((inpu, cle) => {
+        if (inpu.value == '') {
+            document.querySelector('#error' + (cle + 1)).innerText = 'choix obligatoire *'
+            document.querySelector('#error' + (cle + 1)).style.color = 'red'
+        } else {
+            document.querySelector('#error' + (cle + 1)).innerText = ''
+            document.querySelector('#error' + (cle + 1)).style.color = 'red'
+            cheked++
+
+        }
+    })
+    if (cheked < 5) {
+        return
     }
-    myclass1.ajoute(nom, prenom, dateb, email, pass,datInscription)
-    myclass1.get_all_user()
-    add_menu()
+
+    let patern_email = /\w+@[a-z]{3,7}\.[a-z]{3,9}/
+    let patern_nom = /[a-zA-Z]{3,50}/
+    let patern_password = /[a-zA-Z0-9.]{8,50}/
+    nom = document.querySelector('#nom').value
+    prenom = document.querySelector('#prenom').value
+    pass = document.querySelector('#pass').value
+    email = document.querySelector('#email').value
+    cheked = 1
+    if (!patern_email.test(email)) {
+        document.querySelector('#error4').innerText = 'Vérifier votre email *'
+    } else {
+        document.querySelector('#error4').innerText = ''
+        cheked++
+    }
+    if (!patern_nom.test(nom)) {
+        document.querySelector('#error1').innerText = 'Vérifier votre nom *'
+    } else {
+        document.querySelector('#error1').innerText = ''
+        cheked++
+    }
+    if (!patern_nom.test(prenom)) {
+        document.querySelector('#error2').innerText = 'Vérifier votre prenom *'
+    } else {
+        document.querySelector('#error2').innerText = ''
+        cheked++
+    }
+    if (!patern_password.test(pass)) {
+        document.querySelector('#error5').innerText = 'Vérifier vote mot de pass  Minimum 8 caractères*'
+    } else {
+        document.querySelector('#error5').innerText = ''
+        cheked++
+    }
+
+
+    if (cheked === 5) {
+        let date = new Date();
+        let day = date.getDate();
+        let month = date.getMonth();
+        let year = date.getFullYear()
+        let datInscription = day + '/' + month + '/' + year
+        let dateb = document.querySelector('#date').value
+        if (bool) {
+            myclass1 = new personne()
+            bool = false
+        }
+        myclass1.ajoute(nom, prenom, dateb, email, pass, datInscription)
+        myclass1.get_all_user()
+        add_menu()
+    }
 }
 let IDUSER
 function affecher() {
